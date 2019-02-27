@@ -24,7 +24,7 @@ class Search extends Component {
               className="form-control"
               placeholder="State name goes here"
               name="searchkey"
-              value={this.state.searchkey.toUpperCase()}
+              value={this.state.searchkey}
               onChange={this.handlechange}
             />
           </div>

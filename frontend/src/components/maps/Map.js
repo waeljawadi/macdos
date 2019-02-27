@@ -6,12 +6,17 @@ const Map = withScriptjs(
     const markers = props.macdos.map(macdo => (
       <MapMarker
         location={{ lat: macdo.latitude, lng: macdo.longitude }}
-        infosuppl={{ macname: macdo.macname,etat: macdo.etat,adresse: macdo.adresse,ville: macdo.ville,phone: macdo.phone }}
+        infosuppl={{
+          macname: macdo.macname,
+          etat: macdo.etat,
+          adresse: macdo.adresse,
+          ville: macdo.ville,
+          phone: macdo.phone
+        }}
       />
     ))
-
     return (
-      <GoogleMap defaultZoom={4} center={{ lat: 35, lng: -101.0589 }}>
+      <GoogleMap defaultZoom={4.3} center={{ lat: props.macdos[0].latitude, lng: props.macdos[0].longitude }}>
         {markers}
       </GoogleMap>
     )

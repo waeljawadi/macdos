@@ -31,7 +31,7 @@ class MapMarker extends Component {
                 <i class="fas fa-utensils" /> {this.props.infosuppl.macname}
                 <br />
                 <i class="fas fa-map-marker-alt" />{" "}
-                {this.props.infosuppl.adresse}, {this.props.infosuppl.etat},{" "}
+                {this.props.infosuppl.adresse}, {this.props.infosuppl.etat},
                 {this.props.infosuppl.ville}
                 <br />
                 <i class="fas fa-phone-volume" /> {this.props.infosuppl.phone}
