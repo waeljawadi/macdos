@@ -2,40 +2,52 @@ const express = require("express")
 const app = express()
 const bodyParser = require("body-parser")
 const csv = require("csvtojson")
+const csvFilePath = "./assets/mcdonalds.csv"
+const fs = require("fs")
+
+app.use(bodyParser.json())
+
+let change_columns = column =>
+  column
+    .split("")
+    .filter(el => el != '"')
+    .join("")
+
 const converter = csv({
-  noheader:true,
-  headers:  ["latittude","langitude","macname","etat","adresse","ville","etatagain","phone"],
-  ignoreColumns:/(etatagain)/,
+  noheader: true,
+  headers: [
+    "latittude",
+    "langitude",
+    "macname",
+    "etat",
+    "adresse",
+    "ville",
+    "etatagain",
+    "phone"
+  ],
+  ignoreColumns: /(etatagain)/,
   quote: "'",
   escape: '"',
-
-
-
-  colParser:{
-    "latittude": (column) => column.split('').filter( el =>  el != '"').join(''),
-    "langitude": (column) => column.split('').filter( el =>  el != '"').join(''),
-    "adresse":   (column) => column.split('').filter( el =>  el != '"').join(''),
-    "macname":   (column) => column.split('').filter( el =>  el != '"').join(''),
-    "ville":     (column) => column.split('').filter( el =>  el != '"').join(''),
-    "etat":      (column) => column.split('').filter( el =>  el != '"').join(''),
-    "phone":     (column) =>  column.split('').filter( el =>  el != '"').join(''),
-    "etatagain":     (column) =>  column.split('').filter( el =>  el != '"').join(''),
-    
-
-
-
-}
-
-
-
-
-
+  colParser: {
+    latittude: column => Number(change_columns(column)),
+    langitude: column => Number(change_columns(column)),
+    macname: column => change_columns(column),
+    etat: column => change_columns(column),
+    adresse: column => change_columns(column),
+    ville: column => change_columns(column),
+    etatagain: column => change_columns(column),
+    phone: column => change_columns(column)
+  }
 })
-const csvFilePath = "./assets/mcdonalds.csv"
+
 converter.fromFile(csvFilePath).then(jsonObj => {
-  app.get("/", (req, res) => {
+  app.get("/getall", (req, res) => {
     res.send(jsonObj)
   })
 })
-app.use(bodyParser.json())
-app.listen(3000)
+
+const port = process.env.PORT || 3007
+app.listen(port, err => {
+  err ? console.log("Server Down") : console.log("Server up and runing")
+})
+
