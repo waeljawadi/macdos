@@ -1,9 +1,7 @@
 import React from "react"
 import Map from "./Map"
 import { connect } from "react-redux"
-
 import axios from "axios"
-
 class MapContainer extends React.Component {
   constructor(props) {
     super(props)
