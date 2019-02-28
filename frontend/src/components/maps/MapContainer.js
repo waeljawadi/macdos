@@ -31,7 +31,7 @@ class MapContainer extends React.Component {
       // list filtrer des macdonal , evoyer comme props vers la component map
       <Map
         macdos={filtredlist}
-        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyAjbWil1vIoT2Kt0wA6x0JMJ80QDqG6VY8&callback=myMap`}
+        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyDaBDV1fk_Gg9xjLoxyzn4VQwVmUxmixEs`}
         loadingElement={<div style={{ height: `100%` }} />}
         containerElement={<div style={{ height: `500px`, width: `100%` }} />}
         mapElement={<div style={{ height: `100%` }} />}
