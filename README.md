@@ -23,6 +23,7 @@ See deployment for notes on how to deploy the project on a live system.
 --> third party npm modules used for frontend axios| react-redux | redux | react-google-maps
 
 4 - run backend: nodemon server.js
+
 5 - run frontend: npm start
 
 
