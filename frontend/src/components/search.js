@@ -6,7 +6,7 @@ class Search extends Component {
   constructor(props) {
     super(props)
 
-  // cette state contient le value de l'input search
+    // cette state contient le value de l'input search
 
     this.state = { searchkey: "" }
   }
@@ -41,7 +41,7 @@ class Search extends Component {
             <input
               type="text"
               className="form-control"
-              placeholder="State name goes here"
+              placeholder="code du state"
               name="searchkey"
               value={this.state.searchkey}
               onChange={this.handlechange}
