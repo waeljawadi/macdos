@@ -2,9 +2,11 @@ const express = require("express")
 const bodyParser = require("body-parser")
 const csv = require("csvtojson")
 const csvFilePath = "./assets/mcdonalds.csv"
+const jsonFilePath = "./assets/mcdonalds"
+
+const fs = require("fs")
 const app = express()
 app.use(bodyParser.json())
-
 //  fonction  : change_columns
 // utulité : filtrer le colonne du API json
 // format au debut ("\"\""texttext" ou "texttext"\"\") -----Apres filtrage-------> "texttext"
@@ -58,15 +60,27 @@ const converter = csv({
 })
 
 // la plugin itullise un promise pour convertir le csv vers json
-// --> apres le traitement on envoie la resultat jsonObj dans un request de type GET a travers EXPRESS
-converter.fromFile(csvFilePath).then(jsonObj => {
-  app.get("/getall", (req, res) => {
-    res.send(jsonObj)
-  })
+// --> Resultat obtenu va etre stocker dans un fichier "mcdonalds"
+// ---> le fichier contient les donner formatter en json , mai il n'a pas d'extension ".json" -----explication---->
+// quand je lance le serveur avec le plugin nodemon, l'extension .json cause
+// un probleme ( serveur entre dans un boucle infini quand il fait le save des donner dans le fichier alors j'ai enlever le .json ) pour
+// resoudre le probleme
+converter
+  .fromFile(csvFilePath)
+  .then(jsonObj =>
+    fs.writeFile(jsonFilePath, JSON.stringify(jsonObj), err =>
+      err
+        ? console.log("Probleme while saving file")
+        : console.log("The file was saved!")
+    )
+  )
+
+// avec un request get vers /getall on va lire du fichier "mcdonalds"
+app.get("/getall", (req, res) => {
+  res.send(fs.readFileSync(jsonFilePath, "utf8"))
 })
 
 const port = process.env.PORT || 3007
-
 app.listen(port, err =>
   err ? console.log("Server is down") : console.log("Server up and runing")
 )
