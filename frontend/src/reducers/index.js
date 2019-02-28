@@ -1,3 +1,4 @@
 import {combineReducers} from 'redux'
 import mylist from './mylist'
-export default combineReducers({mylist})
+import centermap from './centermap'
+export default combineReducers({mylist,centermap})

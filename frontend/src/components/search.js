@@ -1,6 +1,7 @@
 import React from "react"
 import { Component } from "react"
 import MapContainer from "./maps/MapContainer"
+import { connect } from "react-redux"
 class Search extends Component {
   constructor(props) {
     super(props)
@@ -11,13 +12,17 @@ class Search extends Component {
       [event.target.name]: event.target.value
     })
   }
+  componentDidUpdate() {
+    this.props.upadatecenter(this.state.searchkey)
+  }
   render() {
     return (
       <React.Fragment>
         <div className="container">
           <div className="form-group">
-            <label htmlFor="exampleInputEmail1"><br/>
-              Search MacDonalds by State name :
+            <label htmlFor="exampleInputEmail1">
+              <br />
+              Search MacDonalds by State "KEY" :
             </label>
             <input
               type="text"
@@ -28,10 +33,23 @@ class Search extends Component {
               onChange={this.handlechange}
             />
           </div>
-          <MapContainer searchkey={this.state.searchkey} />
         </div>
+        <MapContainer searchkey={this.state.searchkey} />
       </React.Fragment>
     )
   }
 }
-export default Search
+const mapDispatchToProps = dispatch => {
+  return {
+    upadatecenter: searchkey => {
+      dispatch({
+        type: "UPDATECENTER",
+        searchkey
+      })
+    }
+  }
+}
+export default connect(
+  null,
+  mapDispatchToProps
+)(Search)

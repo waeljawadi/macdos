@@ -1,6 +1,8 @@
 import React from "react"
 import { Component } from "react"
 import { Marker, InfoWindow } from "react-google-maps"
+import marker from "../../assets/pictures/restaurant.png"
+import "./style/style.css"
 class MapMarker extends Component {
   state = {
     showInfoWindow: false
@@ -23,10 +25,10 @@ class MapMarker extends Component {
           position={this.props.location}
           onMouseOver={this.handleMouseOver}
           onMouseOut={this.handleMouseExit}
-          icon="https://www.kingsway-tyres.co.uk/wp-content/uploads/2017/04/map-marker-pin-icon.svg"
+          icon={marker}
         >
           {showInfoWindow && (
-            <InfoWindow>
+            <InfoWindow className="infowindow">
               <p>
                 <i class="fas fa-utensils" /> {this.props.infosuppl.macname}
                 <br />

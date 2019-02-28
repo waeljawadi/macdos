@@ -4,12 +4,17 @@ import { connect } from "react-redux"
 import axios from "axios"
 class MapContainer extends React.Component {
   componentDidMount = () => {
-    axios.get("/getall").then(res => this.props.updateListReducer(res.data))
+    const { updateListReducer } = this.props
+    axios.get("/getall").then(res => updateListReducer(res.data))
   }
   render() {
-    const filtredlist = this.props.list.filter(el =>
-      el.etat == this.props.searchkey.toUpperCase()
-    )
+    const { list, searchkey } = this.props
+    let filtredlist
+    searchkey != ""
+      ? (filtredlist = list.filter(
+          el => el.etat.indexOf(searchkey.toUpperCase()) > -1
+        ))
+      : (filtredlist = list.filter(el => el.etat == searchkey.toUpperCase()))
     return (
       <Map
         macdos={filtredlist}
