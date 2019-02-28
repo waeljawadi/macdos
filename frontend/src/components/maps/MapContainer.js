@@ -8,7 +8,7 @@ class MapContainer extends React.Component {
   }
   render() {
     const filtredlist = this.props.list.filter(el =>
-      el.etat.indexOf(this.props.searchkey.toUpperCase()) > -1
+      el.etat == this.props.searchkey.toUpperCase()
     )
     return (
       <Map
