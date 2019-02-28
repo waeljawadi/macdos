@@ -4,8 +4,16 @@ import { connect } from "react-redux"
 import MapMarker from "./MapMarker"
 const Map = withScriptjs(
   withGoogleMap(props => {
-    const markers = props.macdos.map(macdo => (
+
+// mapping du liste final 
+// ---> la component Mapmarker va faire le hundle de chaque restaurent 
+// et l'afficher sur le map avec une info bulle
+// passage des info sous forme de deux props
+// --- location ---> contient les coordonner google map
+// infosuppl ----> contient les information de l'infobulle de chaque restaurant
+    const markers = props.macdos.map((macdo,index) => (
       <MapMarker
+      key={index}
         location={{ lat: macdo.latitude, lng: macdo.longitude }}
         infosuppl={{
           macname: macdo.macname,
@@ -16,10 +24,19 @@ const Map = withScriptjs(
         }}
       />
     ))
+
+    // la carte google map va etre centrer selon 
+    // la recherche effectuer  par le user 
+    // traitement fait dans le reducer ---> centermap
+
+
+    // extraction des info longitude, latitude, zoom
     const { lat, lng, zoom } = props.coordonner
     return (
       <React.Fragment>
         <GoogleMap zoom={zoom} center={{ lat: lat, lng: lng }}>
+
+        {/* affichage des marqeur deja traité dans la component MAPMARKER  */}
           {markers}
         </GoogleMap>
       </React.Fragment>
