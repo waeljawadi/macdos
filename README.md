@@ -1,9 +1,9 @@
 # McDonalds Geolocalisation
-Geolocalisation : USA based Macdonalds  (Search via input text | Result displayed marker with infobulle containing all information)
+Geolocalisation : USA based Macdonalds  
 # Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
+Small react application with backend created with node and express.
 
-See deployment for notes on how to deploy the project on a live system.
+The application contains a search input , you have to type the USA state code and the result is a marker(s) of all McDonalds in thi state , isplayed on map
 # how to run application
 1 - download project 
 
