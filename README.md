@@ -3,7 +3,7 @@ Geolocalisation : USA based Macdonalds
 # Getting Started
 Small react application with backend created with node and express.
 
-The application contains a search input , you have to type the USA state code and the result is a marker(s) of all McDonalds in thi state , isplayed on map
+The application contains a search input , you have to type the USA state code and the result is a marker(s) of all McDonalds in this state , displayed on map
 # how to run application
 1 - download project 
 
