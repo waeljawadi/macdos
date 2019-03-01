@@ -20,7 +20,7 @@ The application contains a search input , you have to type the USA state code an
 
 3 - open folder backend and install npm backage (npm install) :
 
---> third party npm modules used for frontend axios| react-redux | redux | react-google-maps
+--> third party npm modules used for frontend axios | react-redux | redux | react-google-maps
 
 4 - run backend: nodemon server.js
 
