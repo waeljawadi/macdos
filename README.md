@@ -1,5 +1,5 @@
 # McDonalds Geolocalisation
-Geolocalisation : USA based Macdonalds  (Search via input text | Result displayed marker with infobulle containing all infos
+Geolocalisation : USA based Macdonalds  (Search via input text | Result displayed marker with infobulle containing all information)
 # Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
 
