@@ -15,6 +15,8 @@ The application contains a search input , you have to type the USA state code an
           after that all operation (research restaurant) will be handled via get request to the database 
           i also used redux to make data manipulation easy
 
+
+          
           ----------- PROJECT TWO : NO DATA BASE -----folder:sipmle-----
           how the project works ---> the cv is converted to json 
           then json object is saved into a file 
