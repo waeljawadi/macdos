@@ -50,7 +50,7 @@ The application contains a search input , you have to type the USA state code an
 5 - run frontend: npm start
 6 - run your mongo database
 
- 
+   
 
                   ---------------PROJECT 2: WITH NO DATA BASE-----------
                   
